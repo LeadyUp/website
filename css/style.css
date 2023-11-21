@@ -214,3 +214,20 @@ b::before {
 .second-section button:active {
     background-color: #49BCB5;
 }
+
+.rgpd {
+    margin: 5% 15%;
+}
+
+.rgpd h1 {
+    padding-bottom: 3rem;
+}
+
+.rgpd h2 {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+}
+.rgpd h3 {
+    margin-top: 1rem;
+    font-weight: 600;
+}
