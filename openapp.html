@@ -1,0 +1,24 @@
+<!-- Create a simple html page with javascript 
+    that automatically redirect to leadyup://auth?url=(base64 encoded url of the document location) 
+    when the page is loaded.
+
+    And if the page doesn't redirect to the leadyup app, it should display a message to the user to install the app.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open App</title>
+    <script>
+        function openApp() {
+            var url = window.location.href;
+            var base64Url = btoa(url);
+            var appUrl = "leadyup://auth?url=" + base64Url;
+            window.location.href = appUrl;
+        }
+    </script>
+</head>
+<body onload="openApp()">
+    <h1>Redirecting to Leadyup App</h1>
+    <p>If the app doesn't open, please install the app from the app store.</p>
+</body>
+</html>
