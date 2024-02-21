@@ -1,24 +1,79 @@
-<!-- Create a simple html page with javascript 
-    that automatically redirect to leadyup://auth?url=(base64 encoded url of the document location) 
-    when the page is loaded.
-
-    And if the page doesn't redirect to the leadyup app, it should display a message to the user to install the app.
--->
 <!DOCTYPE html>
-<html>
+<html lang="fr" class="aurora-outer">
 <head>
+    <meta charset="UTF-8">
+    <title>LeadyUp - Boostez votre activité de CGP</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1.5">
     <title>Open App</title>
     <script>
         function openApp() {
             var url = window.location.href;
             var base64Url = btoa(url);
             var appUrl = "leadyup://auth?url=" + base64Url;
+            document.getElementById('link').href = appUrl;
             window.location.href = appUrl;
         }
+        // en fonction du navigateur afficher le bon bouton vers les stores, ou les deux
+        // en appliquand une classe sur les boutons pour cacher ceux inutiles
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile) {
+            var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            var isAndroid = /Android/i.test(navigator.userAgent);
+            
+            if (isIOS) {
+                document.getElementById('playstore').classList.add('hidden');
+            } else if (isAndroid) {
+                document.getElementById('appstore').classList.add('hidden');
+            }
+        }
     </script>
+    <style>
+        .center {
+            text-align: center;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+        }
+        .hidden {
+            display: none;
+        }
+        a {
+            margin: 20px;
+            /* remove link style */
+            text-decoration: none;
+        }
+        .action {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-<body onload="openApp()">
-    <h1>Nous vous redirigeons vers l'application LeadyUp</h1>
-    <p>Si l'application ne s'ouvre pas, veuillez l'installer à partir du store.</p>
+<body onload="openApp()" class="aurora-inner">
+    <main>
+        <!-- Centrer le contenu au milieu de la page -->
+        <div class="center">
+            <!-- <img src="img/logo.png" alt="LeadyUp" class="logo"> -->
+            <h1>Nous vous redirigeons vers l'application LeadyUp...</h1>
+            <p class="action">Si l'application ne s'ouvre pas, veuillez d'abord l'installer à partir du store.</p>
+            <!-- En fonction du navigateur afficher le bon bouton vers les stores, ou les deux -->
+            <a id="appstore" href="https://apps.apple.com/il/app/leadyup/id6466212771" target="_blank">
+                <img src="img/app-store.png" alt="App Store" width="150">
+            </a>
+            
+            <a id="playstore" href="https://play.google.com/store/apps/details?id=fr.leadyup.app&hl=fr_CH&gl=US" target="_blank">
+                <img src="img/google-play.png" alt="Google Play" width="150">
+            </a>
+    
+            <p class="action">Une fois l'application installée, cliquez sur le lien suivant pour l'ouvrir.</p>
+            <a id="link" href="" target="_blank">Ouvrir l'application</a>
+
+        </div>
+    </main>
 </body>
 </html>
