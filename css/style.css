@@ -29,9 +29,6 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
-	list-style: none;
-}
 blockquote, q {
 	quotes: none;
 }
@@ -230,4 +227,17 @@ b::before {
 .rgpd h3 {
     margin-top: 1rem;
     font-weight: 600;
+}
+
+.rgpd p {
+    margin-top: 1rem;
+}
+
+.rgpd ul {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+.rgpd li {
+    margin-top: .5rem;
 }
